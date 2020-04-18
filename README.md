@@ -63,6 +63,6 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
 ------------------------
-Use Robolectrics
-Use Java 9 
+Use Robolectrics,
+Use Java 9 ,
 See Android Resources in local test
