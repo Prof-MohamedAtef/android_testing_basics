@@ -65,4 +65,4 @@ the License.
 ------------------------
 Use Robolectrics,
 Use Java 9 ,
-See Android Resources in local test
+See Android Resources in local test, InstantTaskExecutorRule for testing Architecture Components, observeForever without the need for lifeCycleOwner, used @before + livedate Observer testing
