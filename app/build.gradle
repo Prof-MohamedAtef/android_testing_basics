@@ -78,6 +78,9 @@ dependencies {
 
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
 
+    //test arch components
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
     //hamcrest
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
 
