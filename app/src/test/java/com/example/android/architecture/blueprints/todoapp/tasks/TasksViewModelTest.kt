@@ -7,9 +7,11 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.android.architecture.blueprints.todoapp.Event
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
+import org.hamcrest.core.Is.`is`
 import org.hamcrest.core.IsNot.not
 import org.hamcrest.core.IsNull.nullValue
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,12 +21,25 @@ import org.robolectric.annotation.Config
 @Config(sdk = [Build.VERSION_CODES.O_MR1])
 class TasksViewModelTest{
 
+    private lateinit var tasksViewModel: TasksViewModel
+
     @get:Rule
     var instantExecutorRule=InstantTaskExecutorRule()
 
+
+    @Before
+    fun setupViewModel(){
+        tasksViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
+    }
+
+    @Test
+    fun setFilterAllTasks_tasksAddViewVisible(){
+        tasksViewModel.setFiltering(TasksFilterType.ALL_TASKS)
+        assertThat(tasksViewModel.tasksAddViewVisible.getOrAwaitValue(), `is`(true))
+    }
+
     @Test
     fun addNewTask_setsNewTaskEvent(){
-        val tasksViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
 
 //        val observer = Observer<Event<Unit>> {}
 
