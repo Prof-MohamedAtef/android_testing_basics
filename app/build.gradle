@@ -5,6 +5,12 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
 
+    testOptions.unitTests {
+        includeAndroidResources = true
+
+        // ...
+    }
+
     useLibrary 'android.test.runner'
 
     useLibrary 'android.test.base'
