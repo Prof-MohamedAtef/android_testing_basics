@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.android.architecture.blueprints.todoapp.Event
+import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
 import org.hamcrest.core.IsNot.not
 import org.hamcrest.core.IsNull.nullValue
 import org.junit.Assert.*
@@ -25,23 +26,22 @@ class TasksViewModelTest{
     fun addNewTask_setsNewTaskEvent(){
         val tasksViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
 
-        val observer = Observer<Event<Unit>> {}
+//        val observer = Observer<Event<Unit>> {}
 
-        try {
+//        try {
 // Observe the LiveData forever
-            tasksViewModel.newTaskEvent.observeForever(observer)
+//            tasksViewModel.newTaskEvent.observeForever(observer)
 
             // When adding a new task
             tasksViewModel.addNewTask()
 
             // Then the new task event is triggered
-            val value = tasksViewModel.newTaskEvent.value
-            assertThat(value?.getContentIfNotHandled(), (not(nullValue())))
-        }finally {
-            // Whatever happens, don't forget to remove the observer!
-            tasksViewModel.newTaskEvent.removeObserver(observer)
-        }
-
-        tasksViewModel.addNewTask()
+            val value = tasksViewModel.newTaskEvent.getOrAwaitValue ()
+            assertThat(value.getContentIfNotHandled(), (not(nullValue())))
+//        }
+//        finally {
+//            // Whatever happens, don't forget to remove the observer!
+//            tasksViewModel.newTaskEvent.removeObserver(observer)
+//        }
     }
 }
